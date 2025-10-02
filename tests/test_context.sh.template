@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Test context configuration template
+# Copy this file to test_context.sh and customize the values for your test environment
+
+# Web Server host domain
+export WEB_SERVER_HOST="localhost"
+
+# SRE user for testing
+export SRE_USER="test_sre_user"
+
+# File path to the SRE user's SSH secret key
+export SRE_SSH_KEY="~/.ssh/test_sre_user.pem"
+
+# Web Server target directory (absolute path) for content
+export WEB_SERVER_TARGET_DIR="/var/www/html/testapp"
