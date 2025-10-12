@@ -6,7 +6,7 @@
 set -e
 
 # Dynamically calculate the project home directory (parent of script directory)
-PROJECT_HOME="$(cd "$(dirname "$(dirname "$0")")" && pwd)"
+PROJECT_HOME="$(cd "$(dirname "$(dirname "$(realpath "$0")")")" && pwd)"
 
 echo "Setting up test environment..."
 echo "Project home: ${PROJECT_HOME}"
