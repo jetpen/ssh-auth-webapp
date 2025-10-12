@@ -91,10 +91,15 @@ Traditional password-based authentication has significant security and usability
 
 ## 🚀 Installation
 
-### 1. Clone Repository
+### 1. Clone Repository and copy to web server for testing
 ```bash
 git clone https://github.com/jetpen/ssh-auth-webapp.git
 cd ssh-auth-webapp
+cd tests
+bash setup_test_env.sh
+# edit test_context.sh with location and credentials for accessing the web server
+bash setup_test_env.sh
+# login to web server and verify that the files have correct permissions
 ```
 
 ### 2. Database Setup
