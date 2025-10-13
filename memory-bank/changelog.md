@@ -5,6 +5,11 @@ All notable changes to the SSH Authentication Webapp project will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.3] - 2025-10-13
+
+### Fixed
+- **Fatal Error in setup.php**: Added missing require_once for includes/functions.php to resolve undefined sanitizeOutput() function error
+
 ## [0.2.2] - 2025-10-02
 
 ### Updated

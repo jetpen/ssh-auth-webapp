@@ -5,8 +5,9 @@
  * Administrative interface for setting up the database schema.
  */
 
-// Include configuration
+// Include configuration and utilities
 require_once 'includes/config.php';
+require_once 'includes/functions.php';
 
 // Start session for status messages
 if (!isset($_SESSION)) {

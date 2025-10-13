@@ -112,7 +112,7 @@ FLUSH PRIVILEGES;
 ```
 
 ### 3. Configure Application
-Edit `src/includes/config.php`:
+Copy `includes/config-template.php` to `includes/config.php` and edit:
 ```php
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'ssh_auth_db');
@@ -141,7 +141,7 @@ sudo certbot --apache -d your-domain.com
 ```
 
 ### 6. Database Schema
-Access `https://your-domain.com/setup.php` to create database tables.
+Access `https://your-domain.com/setup.php` to create database tables by clicking the button.
 
 ## 📖 Usage
 
