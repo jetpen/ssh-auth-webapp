@@ -2,11 +2,11 @@
     "name": "jetpen/ssh-auth-webapp",
     "description": "SSH Authentication Web Application",
     "type": "project",
-    "license": "MIT",
+    "license": "Apache-2.0",
     "authors": [
         {
-            "name": "jetpen",
-            "email": "jetpen@example.com"
+            "name": "Ben Eng",
+            "email": "ben.eng.1@gmail.com"
         }
     ],
     "require": {
