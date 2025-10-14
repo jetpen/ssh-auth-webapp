@@ -26,5 +26,5 @@ $message = $testAuth ?
     'You have been successfully logged out.';
 
 // Redirect back to home page
-redirect('account.php', $message);
+redirect( $testAuth ? 'account.php' : 'index.php', $message);
 ?>
