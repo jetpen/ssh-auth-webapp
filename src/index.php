@@ -8,6 +8,7 @@
 // Include configuration and functions
 require_once 'includes/config.php';
 require_once 'includes/functions.php';
+require_once 'includes/auth.php';
 
 // Start session for flash messages
 if (!isset($_SESSION)) {

@@ -165,15 +165,24 @@ Access `https://your-domain.com/setup.php` to create database tables by clicking
 
 ## 🧪 Testing
 
-### Local Development Setup
+### Setup of app on Remote Web Server
 ```bash
-# Set up test environment
-./tests/setup_test_env.sh
+# Install vendor packages
+composer install
 
 # Configure test context
 cp tests/test_context.sh.template tests/test_context.sh
 # Edit tests/test_context.sh with your values
+
+# Set up test environment with vendor packages
+./tests/setup_test_vendor.sh
+
+# Set up test environment with app
+./tests/setup_test_app.sh
 ```
+
+Additional steps must be taken to change user and group ownership of the files on the Web server.
+Also, change the permissions on the files and directories to enable the Web server to read them.
 
 ### Manual Testing
 1. **Unit Tests**: PHP syntax validation completed

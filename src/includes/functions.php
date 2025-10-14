@@ -109,6 +109,8 @@ function requireAuth() {
     }
 }
 
+
+
 /**
  * Log out current user
  */

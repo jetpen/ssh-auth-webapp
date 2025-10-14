@@ -84,11 +84,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->bind_param('sss', $userId, $userName, $sshPublicKey);
 
                 if ($stmt->execute()) {
-                    $message = 'Account created successfully! You can now authenticate using your SSH key.';
-                    $messageType = 'success';
+                    // Authenticate the user immediately after account creation
+                    $_SESSION['user_id'] = $userId;
+                    $_SESSION['authenticated'] = true;
 
-                    // Clear form data
-                    $userId = $userName = $sshPublicKey = '';
+                    // Redirect to account page
+                    redirect('account.php', 'Account created successfully! Welcome to your account.');
                 } else {
                     $errors[] = 'Failed to create account. Please try again.';
                 }

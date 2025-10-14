@@ -32,8 +32,8 @@ This webapp provides the server-side of the challenge-response protocol that wor
 ## How It Should Work
 
 ### Core User Flow
-1. **Sign-up**: User creates account
-2. **Authentication**: When user accesses a page requiring authentication, such as the user's account summary page, the user must be authenticated
+1. **Sign-up**: User creates account and is automatically authenticated
+2. **Authentication**: User is immediately redirected to their account page after signup; subsequent access to protected pages uses challenge-response authentication with SSH keys
 
 ### Key Interactions
 - **Landing Page**: Simple UI with a link to sign up via the Account Creation Interface
@@ -54,4 +54,3 @@ This webapp provides the server-side of the challenge-response protocol that wor
 - **Accessibility**: Works across different Chromium browsers (Chrome, Brave, Edge)
 - **Privacy**: No external data transmission of sensitive key material
 - **Reliability**: Robust error handling and fallback mechanisms
-

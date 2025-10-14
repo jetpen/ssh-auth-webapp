@@ -1,0 +1,126 @@
+# Cline Configuration for SSH Authentication Webapp
+
+project:
+  name: "SSH Authentication Webapp"
+  description: "A PHP web application that authenticates users using SSH key-based authentication via browser extension"
+  version: "0.2.3"
+  language: "PHP"
+  framework: "Vanilla PHP"
+
+paths:
+  root: "."
+  src: "src/"
+  docs: "memory-bank/"
+  config: "src/includes/"
+  public: "src/"
+  tests: "tests/"
+
+key_files:
+  - "README.md"
+  - "src/index.php"
+  - "src/setup.php"
+  - "src/signup.php"
+  - "src/auth.php"
+  - "src/account.php"
+  - "memory-bank/projectbrief.md"
+  - "memory-bank/activeContext.md"
+  - "memory-bank/progress.md"
+  - "src/includes/config-template.php"
+  - "src/includes/functions.php"
+  - "src/includes/auth.php"
+
+memory_bank:
+  enabled: true
+  files:
+    - "memory-bank/projectbrief.md"
+    - "memory-bank/productContext.md"
+    - "memory-bank/systemPatterns.md"
+    - "memory-bank/techContext.md"
+    - "memory-bank/activeContext.md"
+    - "memory-bank/progress.md"
+    - "memory-bank/changelog.md"
+
+development:
+  environment: "PHP 7.4+, MySQL 5.7+, Apache 2.4+"
+  setup_commands:
+    - "Configure Apache virtual host pointing to src/ directory"
+    - "Create MySQL database and user"
+    - "Run src/setup.php to initialize database schema"
+    - "Install ssh-auth-extension in Chromium browser"
+  test_commands:
+    - "Access setup.php for database initialization"
+    - "Create test account at signup.php"
+    - "Test authentication flow with extension"
+
+security:
+  priority: "high"
+  requirements:
+    - "HTTPS mandatory for all communications"
+    - "Never store or transmit private SSH keys"
+    - "Implement CSRF and XSS protection"
+    - "Secure session cookie handling"
+  sensitive_data:
+    - "SSH public keys (stored securely)"
+    - "User session data"
+    - "Database credentials"
+
+workflows:
+  bug_fix:
+    - "Reproduce the issue"
+    - "Check memory bank for related context"
+    - "Fix the code"
+    - "Update changelog.md"
+    - "Update activeContext.md if needed"
+    - "Test the fix"
+
+  feature_development:
+    - "Review projectbrief.md for requirements"
+    - "Check activeContext.md for current priorities"
+    - "Implement feature following security patterns"
+    - "Update progress.md"
+    - "Update changelog.md"
+
+  documentation_update:
+    - "Read all memory bank files"
+    - "Document current state accurately"
+    - "Update relevant memory bank files"
+    - "Ensure changelog reflects changes"
+
+rules:
+  - "Always read ALL memory bank files at the start of each task"
+  - "Follow PHP security best practices"
+  - "Maintain separation of concerns (MVC pattern)"
+  - "Use prepared statements for database queries"
+  - "Validate and sanitize all user inputs"
+  - "Never expose sensitive authentication data"
+  - "Update memory bank after significant changes"
+  - "Test changes in development environment before deployment"
+  - "Command execution in terminal must cd to project root"
+  - "Use Context7 to fetch relevant library documentation for code"
+
+dependencies:
+  runtime:
+    - "PHP 7.4+ with mysqli, openssl, session extensions"
+    - "MySQL 5.7+ or MariaDB 10.3+"
+    - "Apache 2.4+ with mod_php"
+    - "ssh-auth-extension browser extension"
+  development:
+    - "Visual Studio Code"
+    - "Git"
+    - "MySQL Workbench (optional)"
+
+deployment:
+  target: "Apache HTTPD + PHP + MySQL on Linux"
+  requirements:
+    - "HTTPS certificate configuration"
+    - "Proper file permissions"
+    - "Database user with minimal privileges"
+  checklist:
+    - "Verify PHP version compatibility"
+    - "Configure Apache virtual host"
+    - "Set up MySQL database and user"
+    - "Upload files to web server"
+    - "Configure HTTPS certificates"
+    - "Test database setup page"
+    - "Verify extension installation"
+    - "Test complete authentication flow"

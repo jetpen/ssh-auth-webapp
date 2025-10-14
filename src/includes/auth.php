@@ -1,4 +1,8 @@
 <?php
+require_once __DIR__ . '/vendor/autoload.php';
+
+use phpseclib3\Crypt\PublicKeyLoader;
+
 /**
  * SSH Authentication Webapp - Authentication Logic
  *
@@ -31,7 +35,11 @@ function encryptChallenge($challenge, $publicKey) {
 
     // For RSA keys, we can use OpenSSL to encrypt
     if ($parsedKey['type'] === 'ssh-rsa') {
-        $encrypted = openssl_public_encrypt($challenge, $encryptedData, $parsedKey['key']);
+        $oOpenSSLAsymmetricKey = openssl_get_publickey($parsedKey['key']);
+        if (!$oOpenSSLAsymmetricKey) {
+            throw new Exception('Failed to recognize public key ' . $parsedKey['key']);
+        }
+        $encrypted = openssl_public_encrypt($challenge, $encryptedData, $oOpenSSLAsymmetricKey);
         if (!$encrypted) {
             throw new Exception('Failed to encrypt challenge with public key');
         }
@@ -95,10 +103,15 @@ function parseSSHPublicKey($publicKey) {
             return null;
         }
 
-        // Convert binary key data to PEM format for OpenSSL
-        $pemKey = "-----BEGIN PUBLIC KEY-----\n" .
-                 chunk_split(base64_encode($keyData), 64, "\n") .
-                 "-----END PUBLIC KEY-----";
+        try {
+            // Load the SSH key; phpseclib handles parsing
+            $loadedPublicKey = PublicKeyLoader::load($publicKey);
+
+            // Convert to PEM format
+            $pemKey = $loadedPublicKey->toString('PKCS8'); // Use 'PKCS8' or 'PKCS1' for different PEM flavors
+        } catch (\Exception $e) {
+            return null;
+        }
 
         return [
             'type' => 'ssh-rsa',

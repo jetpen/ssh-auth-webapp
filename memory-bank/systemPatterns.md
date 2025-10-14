@@ -99,7 +99,9 @@ Validate uniqueness constraints
     ↓
 Store in database
     ↓
-Redirect to success page
+Authenticate user (set session)
+    ↓
+Redirect to account page with welcome message
 ```
 
 ### Database Schema Setup

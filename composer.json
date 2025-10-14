@@ -1,0 +1,24 @@
+{
+    "name": "jetpen/ssh-auth-webapp",
+    "description": "SSH Authentication Web Application",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "jetpen",
+            "email": "jetpen@example.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.3.7",
+        "phpseclib/phpseclib": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "SSHAuth\\": "src/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit"
+    }
+}

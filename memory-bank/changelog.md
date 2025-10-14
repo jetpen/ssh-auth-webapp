@@ -5,6 +5,45 @@ All notable changes to the SSH Authentication Webapp project will be documented 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.7] - 2025-10-13
+
+### Fixed
+- **SSH Key Parsing**: Corrected `parseSSHPublicKey()` function to properly parse SSH RSA binary format and generate valid DER-encoded PEM certificates compatible with OpenSSL
+- **DER Encoding**: Added `encodeDerInteger()` helper function for proper ASN.1 DER integer encoding
+
+### Added
+- **Composer Integration**: Enabled PHP Composer for dependency management with PSR-4 autoloading configuration
+- **Test File**: Created `tests/encryption_test.php` for testing RSA encryption functionality
+- **Gitignore Updates**: Added vendor/ directory and PHP-specific ignore patterns
+
+### Changed
+- **Test File Rename**: Renamed `setup_test_env.sh` to `setup_test_app.sh` for better naming clarity
+
+### Technical
+- **SSH Key Format Handling**: Implemented proper parsing of SSH public key binary format to extract modulus and exponent
+- **DER Certificate Generation**: Built X.509 SubjectPublicKeyInfo structure with algorithm identifiers for OpenSSL compatibility
+- **Dependency Management**: Established Composer infrastructure for future package management
+
+## [0.2.6] - 2025-10-13
+
+### Fixed
+- **Fatal Error getUserById**: Resolved undefined function error by consolidating duplicate getUserById functions into includes/auth.php and adding proper includes in index.php and account.php
+- **Function Conflicts**: Removed duplicate getUserById from includes/functions.php to prevent conflicts
+
+### Changed
+- **Signup Flow**: Modified signup.php to automatically authenticate users after successful account creation and redirect to account.php page
+- **User Experience**: Improved signup flow with immediate access to account page instead of requiring separate authentication step
+
+### Updated
+- **System Patterns**: Updated account creation flow documentation to reflect automatic authentication after signup
+
+## [0.2.4] - 2025-10-13
+
+### Updated
+- **Memory Bank Review**: Comprehensive review of all memory bank files as requested by user
+- **Configuration Template**: Updated documentation to reflect config-template.php instead of config.php for database configuration
+- **Project Status**: Confirmed skeletal implementation remains complete and ready for database setup
+
 ## [0.2.3] - 2025-10-13
 
 ### Fixed
@@ -25,7 +64,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - **Skeletal Application Structure**: Complete basic file structure and core components
-  - includes/config.php: Database configuration and connection management
+  - includes/config-template.php: Database configuration template and connection management
   - includes/functions.php: Utility functions for authentication, validation, and security
   - includes/auth.php: Core SSH key authentication logic and challenge-response implementation
   - index.php: Landing page with user interface and extension information
@@ -60,36 +99,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Extension Integration**: Enhanced documentation with detailed ssh-auth-extension protocol specifications
 - **Authentication Protocol**: Complete challenge-response format and verification requirements
 - **Implementation Specifications**: Detailed technical requirements for extension compatibility
-
-## [0.1.0] - 2025-10-02
-
-### Added
-- **Memory Bank Initialization**: Complete documentation structure established
-  - projectbrief.md: Core requirements and project scope defined
-  - productContext.md: User problems solved and experience goals documented
-  - systemPatterns.md: Architecture, authentication flows, and security patterns
-  - techContext.md: Technology stack, development setup, and constraints
-  - activeContext.md: Current work focus, next steps, and project insights
-  - progress.md: Current status, roadmap, and success metrics
-  - changelog.md: Version history and change tracking
-
-### Changed
-- **Project Structure**: Established memory-bank/ directory for comprehensive documentation
-
-### Technical
-- **Architecture Design**: Defined MVC pattern with clear separation of concerns
-- **Security Model**: Established challenge-response authentication with SSH keys
-- **Database Design**: Specified user_accounts table with unique constraints
-- **Technology Stack**: Confirmed PHP 7.4+, MySQL 5.7+, Apache 2.4+ stack
-- **Development Setup**: Documented local environment requirements and workflow
-- **Extension Integration**: Analyzed ssh-auth-extension challenge detection and response format
-- **Authentication Protocol**: Documented challenge format, response field, and verification requirements
-
-### Documentation
-- **Requirements Analysis**: Comprehensive analysis of SSH key authentication requirements
-- **Security Considerations**: Documented XSS, CSRF, and key security measures
-- **User Experience**: Defined goals for seamless authentication flows
-- **Deployment Strategy**: Outlined hosting requirements and procedures
 
 ## [0.1.0] - 2025-10-02
 

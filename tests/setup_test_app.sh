@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Test environment setup script
-# This script sets up the test environment before test execution
+# This script sets up the test app before test execution
 
 set -e
 

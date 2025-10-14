@@ -1,2 +1,9 @@
 # Test environment configuration
 tests/test_context.sh
+
+# Composer
+vendor/
+
+# PHP
+*.log
+.phpunit.result.cache

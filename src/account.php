@@ -8,6 +8,7 @@
 // Include configuration and functions
 require_once 'includes/config.php';
 require_once 'includes/functions.php';
+require_once 'includes/auth.php';
 
 // Require authentication
 requireAuth();
@@ -114,7 +115,7 @@ $flashMessage = getFlashMessage();
                     <h3>Account Actions</h3>
                     <div class="action-buttons">
                         <a href="logout.php" class="btn btn-primary">Logout</a>
-                        <button onclick="testAuthentication()" class="btn btn-secondary">Test Authentication</button>
+                        <button onclick="testAuthentication()" class="btn btn-secondary">Test Authentication</button>: go to view account
                     </div>
                 </div>
 

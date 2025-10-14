@@ -24,7 +24,7 @@
 
 ### Development Tools
 - **Version Control**: Git
-- **Package Management**: Composer (PHP dependencies)
+- **Package Management**: Composer (PHP dependencies) - configured with PSR-4 autoloading
 - **IDE**: Visual Studio Code
 - **Testing**: Manual testing with browser developer tools
 - **Deployment**: Manual file transfer to web server
@@ -47,7 +47,7 @@ ssh-auth-webapp/
 ├── auth.php               # Authentication handler
 ├── setup.php              # Database setup (admin)
 ├── includes/
-│   ├── config.php         # Database configuration
+│   ├── config-template.php # Database configuration template
 │   ├── functions.php      # Utility functions
 │   └── auth.php           # Authentication logic
 ├── css/
