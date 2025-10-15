@@ -195,22 +195,18 @@ const SSHAuthApp = {
         this.checkExtensionAvailability();
 
         // Listen for extension messages
-        if (window.chrome && window.chrome.runtime) {
-            window.chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-                this.handleExtensionMessage(message, sender, sendResponse);
+        if (window.SSHAuthExtension) {
+            window.SSHAuthExtension.onMessage((message) => {
+                this.handleExtensionMessage(message);
             });
         }
     },
 
     // Check if extension is available
     checkExtensionAvailability: function() {
-        if (window.chrome && window.chrome.runtime && window.chrome.runtime.sendMessage) {
-            window.chrome.runtime.sendMessage({ type: 'PING' }, (response) => {
-                if (response && response.success) {
-                    this.showExtensionStatus(true);
-                } else {
-                    this.showExtensionStatus(false);
-                }
+        if (window.SSHAuthExtension && window.SSHAuthExtension.checkAvailability) {
+            window.SSHAuthExtension.checkAvailability((available) => {
+                this.showExtensionStatus(available);
             });
         } else {
             this.showExtensionStatus(false);
@@ -228,7 +224,7 @@ const SSHAuthApp = {
     },
 
     // Handle messages from extension
-    handleExtensionMessage: function(message, sender, sendResponse) {
+    handleExtensionMessage: function(message) {
         console.log('Received message from extension:', message);
 
         switch (message.type) {
@@ -255,11 +251,7 @@ const SSHAuthApp = {
 
     // Check extension support
     checkExtensionSupport: function() {
-        const extensionSupported = !!(
-            window.chrome &&
-            window.chrome.runtime &&
-            window.chrome.runtime.sendMessage
-        );
+        const extensionSupported = !!(window.SSHAuthExtension && window.SSHAuthExtension.isSupported());
 
         document.body.classList.toggle('extension-supported', extensionSupported);
         document.body.classList.toggle('extension-unsupported', !extensionSupported);

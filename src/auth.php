@@ -131,7 +131,7 @@ $userSelectionMode = (!$challengeData && !$userId && empty($message));
                             </p>
                         </div>
 
-                        <form method="post" action="auth.php" class="auth-form" id="authForm">
+                        <form method="post" action="auth.php" class="auth-form" id="auth-challenge">
                             <input type="hidden" name="user_id" value="<?php echo sanitizeOutput($userId); ?>">
                             <input type="hidden" name="challenge" value="<?php echo sanitizeOutput($challengeData['challenge']); ?>">
                             <input type="hidden" name="redirect" value="<?php echo sanitizeOutput($redirectUrl); ?>">
@@ -215,7 +215,7 @@ $userSelectionMode = (!$challengeData && !$userId && empty($message));
     <script>
         // Handle extension communication for authentication
         document.addEventListener('DOMContentLoaded', function() {
-            const authForm = document.getElementById('authForm');
+            const authForm = document.getElementById('auth-challenge');
             const submitBtn = document.getElementById('submitBtn');
             const responseInput = document.getElementById('ssh_auth_response');
 

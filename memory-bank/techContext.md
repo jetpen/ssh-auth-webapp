@@ -184,3 +184,4 @@ Extension submits authentication response via:
 - **Challenge Encryption**: Encrypt random challenges with user's SSH public key
 - **Signature Verification**: Verify extension-provided signatures against original challenges
 - **Error Handling**: Graceful fallback when extension is not available or fails
+- **Browser Extension**: The window.chrome object may not be used in any JavaScript served by ssh-auth-webapp
